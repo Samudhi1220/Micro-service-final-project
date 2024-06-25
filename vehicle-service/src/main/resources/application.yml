@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: VEHICLE-SERVICE
+  config:
+    import: "optional:configserver:http://localhost:8089"
+  datasource:
+    url: jdbc:mysql://localhost:3306/vehicle_service_db?createDatabaseIfNotExist=true
+    username: root
+    password: Samu1130
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+
+
+

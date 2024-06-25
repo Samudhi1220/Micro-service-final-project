@@ -9,3 +9,15 @@ eureka:
 spring:
   application:
     name: API-GATEWAY
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: TICKET-SERVICE
+            uri: lb://ticket-service
+            predicates:
+              - path=/tickets/**
+          - id: VEHICLE-SERVICE
+            uri: lb://vehicle-service
+            predicates:
+              - path=/vehicles/**
