@@ -1,10 +1,10 @@
 spring:
   application:
-    name: VEHICLE-SERVICE
+    name: USER-SERVICE
   config:
     import: "optional:configserver:http://localhost:8089"
   datasource:
-    url: jdbc:mysql://localhost:3306/vehicle_service_db?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/user_service_db?createDatabaseIfNotExist=true
     username: root
     password: Samu1130
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -18,5 +18,6 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
     database: mysql
+
 
 

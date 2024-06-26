@@ -1,20 +1,14 @@
-package lk.ijse.micro_service.vehicle_service.entity;
+package lk.ijse.micro_service.vehicle_service.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Vehicle {
-
-
+@Data
+public class VehicleDTO {
     @Id
 
     private String id;
@@ -23,7 +17,4 @@ public class Vehicle {
 
     private String ownerName;
     private String model;
-
-
-
 }

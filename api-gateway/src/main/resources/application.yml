@@ -16,8 +16,12 @@ spring:
           - id: TICKET-SERVICE
             uri: lb://ticket-service
             predicates:
-              - path=/tickets/**
+              - path=/api/v1/tickets/**
           - id: VEHICLE-SERVICE
             uri: lb://vehicle-service
             predicates:
-              - path=/vehicles/**
+              - path=/api/v1/vehicles/**
+          - id: USER-SERVICE
+            uri: lb://user-service
+            predicates:
+              - path=/api/v1/users/**
