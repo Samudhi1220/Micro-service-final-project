@@ -15,6 +15,7 @@ public class VehicleDTO {
 
     private String licensePlateNumber;
 
-    private String ownerName;
+
+    private String userId;
     private String model;
 }

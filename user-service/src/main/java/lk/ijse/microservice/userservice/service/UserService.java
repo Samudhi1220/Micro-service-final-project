@@ -12,4 +12,6 @@ public interface UserService {
     void deleteUser(String id);
 
     void updateUser(UserDTO vehicleDTO);
+
+    boolean existById(String id);
 }

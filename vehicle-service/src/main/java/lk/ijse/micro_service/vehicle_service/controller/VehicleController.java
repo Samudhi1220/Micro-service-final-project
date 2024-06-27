@@ -34,7 +34,7 @@ public class VehicleController {
         return new ResponseUtil("200","SuccessFully fetch  vehicle",vehicleService.getVehicleById(vehicleId));
 
     }
-    @PostMapping
+    @PatchMapping
     public ResponseUtil update(@RequestBody VehicleDTO vehicleDTO){
         vehicleService.updateVehicle(vehicleDTO);
         return new ResponseUtil("200","SuccessFully saved vehicle",null);

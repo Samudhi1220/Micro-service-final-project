@@ -39,11 +39,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveUser(UserDTO userDTO) {
-        if (!userRepository.existsById(modelMapper.map(userDTO,User.class).getNic())){
-            userRepository.save(modelMapper.map(userDTO, User.class));
-        }else{
-            throw new RuntimeException("User Id is already Exist");
-        }
+
     }
 
     @Override
@@ -58,10 +54,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(UserDTO userDTO) {
-        if (userRepository.existsById(modelMapper.map(userDTO,User.class).getNic())) {
-            userRepository.save(modelMapper.map(userDTO,User.class));
-        } else {
-            throw new RuntimeException("User Not Found!");
-        }
+
+    }
+
+    @Override
+    public boolean existById(String id) {
+        return userRepository.existsById(id);
     }
 }

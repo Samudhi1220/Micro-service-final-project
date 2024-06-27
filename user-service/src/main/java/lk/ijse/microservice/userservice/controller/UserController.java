@@ -25,12 +25,18 @@ public class UserController {
         return new ResponseUtil("200","SuccessFully fetch all vehicle",userService.getAllUsers());
     }
 
+    @GetMapping("/{userId}")
+    public boolean checkUserExistence(@PathVariable("userId")  String userId){
+        return userService.existById(userId);
+    }
+
+
     @GetMapping(params = "userId" ,path = "/getUser")
     public ResponseUtil getUserById(@RequestParam("userId") String userId) {
         return new ResponseUtil("200","SuccessFully fetch  vehicle",userService.getUserById(userId));
 
     }
-    @PostMapping
+    @PatchMapping
     public ResponseUtil update(@RequestBody UserDTO userDTO){
         userService.updateUser(userDTO);
         return new ResponseUtil("200","SuccessFully saved vehicle",null);

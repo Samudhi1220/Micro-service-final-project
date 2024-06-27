@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -18,8 +19,10 @@ public class VehicleServiceImpl implements VehicleService {
     private final VehicleRepository vehicleRepository;
     private final ModelMapper modelMapper;
 
-    public VehicleServiceImpl(VehicleRepository vehicleRepository, ModelMapper modelMapper) {
+    RestTemplate restTemplate;
+    public VehicleServiceImpl(VehicleRepository vehicleRepository, ModelMapper modelMapper,RestTemplate restTemplate) {
         this.vehicleRepository = vehicleRepository;
+        this.restTemplate= restTemplate;
         this.modelMapper = modelMapper;
     }
     @Override
@@ -40,7 +43,14 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public void createVehicle(VehicleDTO vehicleDTO) {
         if (!vehicleRepository.existsById(modelMapper.map(vehicleDTO,Vehicle.class).getId())){
-            vehicleRepository.save(modelMapper.map(vehicleDTO, Vehicle.class));
+            Boolean isOwnerValid =restTemplate.getForObject("http://USER-SERVICE/api/v1/users/"+vehicleDTO.getUserId(), Boolean.class);
+            System.out.println(isOwnerValid);
+            if (Boolean.TRUE.equals(isOwnerValid)){
+                vehicleRepository.save(modelMapper.map(vehicleDTO, Vehicle.class));
+            }else{
+                throw new RuntimeException("User not found");
+            }
+
         }else{
             throw new RuntimeException("Vehicle Id is already Exist");
         }
