@@ -1,17 +1,20 @@
 package lk.ijse.microservice.userservice.service;
 
 import lk.ijse.microservice.userservice.dto.UserDTO;
+import lk.ijse.microservice.userservice.entity.User;
 
 import java.util.List;
 
 public interface UserService {
-    List<UserDTO> getAllUsers();
-    UserDTO getUserById(String id);
-    void saveUser(UserDTO vehicleDTO);
+    void save(UserDTO userDTO);
 
-    void deleteUser(String id);
+    UserDTO findById(String id);
 
-    void updateUser(UserDTO vehicleDTO);
+    List<UserDTO> findAll();
 
-    boolean existById(String id);
+    void delete(String id);
+
+    void update(UserDTO userDTO);
+
+    boolean existsById(String id);
 }

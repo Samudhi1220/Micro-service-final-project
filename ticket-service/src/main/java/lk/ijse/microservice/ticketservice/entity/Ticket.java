@@ -7,7 +7,6 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import java.time.LocalDateTime;
 
@@ -16,11 +15,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Ticket {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @NonNull
-    private Long vehicleId;
+    private String id;
+    private String vehicleId;
+    private String userId;
     private String status;
     private LocalDateTime issueDate;
 }

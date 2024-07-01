@@ -1,7 +1,6 @@
 package lk.ijse.microservice.userservice.advice;
 
 
-
 import lk.ijse.microservice.userservice.util.ResponseUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
